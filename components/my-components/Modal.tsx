@@ -1,68 +1,15 @@
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useEffect } from "react";
 
-export default function Modal({
-  zoneID,
-  isHidden,
-}: {
-  zoneID: string;
-  isHidden: boolean;
-}) {
-  useEffect(() => {
-    const button = document.getElementById("modal-trigger");
-    if (isHidden && button) {
-      button.click();
-    }
-  }, [isHidden]);
+const Modal = ({ onClose }: { onClose: any }) => {
   return (
-    <Dialog>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogTrigger asChild>
-          <Button variant="outline" id="modal-trigger"></Button>
-        </DialogTrigger>
-        <DialogHeader>
-          <DialogTitle>Zone {zoneID}</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you&apos;re done.
-          </DialogDescription>
-        </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input
-              id="name"
-              defaultValue="Pedro Duarte"
-              className="col-span-3"
-            />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <Input
-              id="username"
-              defaultValue="@peduarte"
-              className="col-span-3"
-            />
-          </div>
-        </div>
-        <DialogFooter>
-          <Button type="submit">Save changes</Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+    <div className="w-full h-full bg-green-600 backdrop-blur">
+      <Card>
+        <Button onClick={onClose}>Click me</Button>
+        Modal
+      </Card>
+    </div>
   );
-}
+};
+
+export default Modal;
